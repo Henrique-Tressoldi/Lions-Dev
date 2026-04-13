@@ -33,6 +33,74 @@ app.post("/users", async (req, res) => {
     }
 })
 
+
+
+app.get("/users", async (req, res) => {
+    try{
+
+        const usuarios = await User.find();
+        res.json(usuarios);
+
+    } catch (error) {
+
+        res.json({error: error.message})
+
+    }
+})
+
+app.get("/users/:id", async (req, res) => {
+    try{
+
+        const usuarioSelecionado = await User.findById(
+
+            req.params.id,
+            req.body
+
+        );
+        res.json(usuarioSelecionado);
+
+    } catch (error) {
+
+        res.json({error: error.message})
+
+    }
+})
+
+app.put("/users/:id", async (req, res) => {
+
+    try{
+
+        const usuarioAtualizado = await User.findByIdAndUpdate(
+            req.params.id,
+            req.body
+        );
+
+    }catch (error){
+
+        res.json({error: error.message})
+
+    }
+})
+
+app.delete("/users/:id", async (req, res) => {
+
+    try{
+
+        const usuarioDeletado = await User.findByIdAndDelete(req.params.id);
+        res.json(usuarioDeletado);
+
+    } catch (error){
+
+        res.json({error: error.message})
+
+    }
+
+
+})
+
+
+
+
 app.listen(PORT, () => {
     console.log("O servidor esta rodando na porta: ", PORT);
 })
