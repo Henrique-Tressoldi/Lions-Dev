@@ -53,8 +53,7 @@ app.get("/users/:id", async (req, res) => {
 
         const usuarioSelecionado = await User.findById(
 
-            req.params.id,
-            req.body
+            req.params.id
 
         );
         res.json(usuarioSelecionado);
