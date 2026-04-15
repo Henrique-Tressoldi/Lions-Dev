@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema (
     {
-        nome: String,
+        name: String,
         email: String,
-
+        phone: Number,
+        keyword: Number,
+        age: Number
     },
     {
         collection: "users"
